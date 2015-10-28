@@ -16,7 +16,10 @@ var EXAMPLES = __dirname + "/../examples/prefer-for-of";
 ruleTester.run("rules/prefer-for-of", rule, {
     valid: [
         {
-            code: fs.readFileSync(EXAMPLES + "/valid.js").toString(),
+            code: fs.readFileSync(EXAMPLES + "/valid/for-each.js").toString(),
+        },
+        {
+            code: fs.readFileSync(EXAMPLES + "/valid/for-of.js").toString()
         }
     ],
 

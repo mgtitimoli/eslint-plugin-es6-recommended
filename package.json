@@ -1,6 +1,6 @@
 {
   "name": "eslint-plugin-es6-recommended",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "description": "ESLint plugin to promote ES6 best practices.",
   "main": "index.js",
   "scripts": {

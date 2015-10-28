@@ -20,7 +20,8 @@ module.exports = function(context) {
                 node.callee.type === "MemberExpression" &&
                 node.callee.property.type === "Identifier" &&
                 node.callee.computed === false &&
-                node.callee.property.name === "forEach"
+                node.callee.property.name === "forEach" &&
+                node.arguments[0].type === "FunctionExpression"
             ) {
                 context.report(
                     node,

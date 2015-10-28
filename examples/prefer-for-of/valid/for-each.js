@@ -1,6 +1,8 @@
 var arr = [ "one", "two", "three" ];
 
-arr.forEach(function (elem) {
+function logElement(elem) {
 
     console.log(elem);
-});
+}
+
+arr.forEach(logElement);
