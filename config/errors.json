@@ -1,0 +1,4 @@
+{
+    "no-arguments" : "Unexpected arguments, use rest parameters instead",
+    "prefer-for-of": "Unexpected loop construction, use for-of instead"
+}
