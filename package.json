@@ -1,7 +1,7 @@
 {
-  "name": "eslint-plugin-modules",
+  "name": "eslint-plugin-es6-recommended",
   "version": "0.1.0",
-  "description": "ESLint rules for JavaScript modules (amd, es6, cjs, etc)",
+  "description": "ESLint plugin to promote ES6 best practices.",
   "main": "index.js",
   "scripts": {
     "test": "mocha test"

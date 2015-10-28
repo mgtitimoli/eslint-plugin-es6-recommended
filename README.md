@@ -1,5 +1,5 @@
 # eslint-plugin-es6-recommended
-ESLint plugin for JavaScript to promote ES6 best practices.
+ESLint plugin to promote ES6 best practices.
 
 ### Installation
 
