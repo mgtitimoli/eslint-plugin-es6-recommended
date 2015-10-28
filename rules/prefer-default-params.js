@@ -4,7 +4,7 @@
  * @copyright 2015 Felix Enriquez. All rights reserved.
  */
 "use strict";
-var msg = 'use default parameters instead asignation with "||" operator';
+var msg = "Intended to simulate unexpected default parameters, instead using parameters by native defects";
 //------------------------------------------------------------------------------
 // Rule Definition
 //------------------------------------------------------------------------------
@@ -17,7 +17,7 @@ module.exports = function(context) {
     body.forEach(function(childNode) {
       if (childNode.type === 'ExpressionStatement' && childNode.expression.type === 'AssignmentExpression') {
         node.params.forEach(function(param) {
-          if (node.expression.left.name === param.name &&
+          if (childNode.expression.left.name === param.name &&
             childNode.expression.right.type === 'LogicalExpression' &&
             childNode.expression.right.operator === "||" &&
             childNode.expression.right.left.name === param.name) {

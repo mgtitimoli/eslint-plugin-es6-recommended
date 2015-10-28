@@ -1,5 +1,3 @@
-function test(x, y, z) {
+function test(x) {
     x = x || 5;
-    y = y || 5;
-    z = z || 5;
 }
