@@ -1,4 +1,5 @@
 {
     "no-arguments" : "Unexpected arguments, use rest parameters instead",
-    "prefer-for-of": "Unexpected loop construction, use for-of instead"
+    "prefer-for-of": "Unexpected loop construction, use for-of instead",
+    "prefer-default-params":"Intended to simulate unexpected default parameters, instead using parameters by native defects"
 }
