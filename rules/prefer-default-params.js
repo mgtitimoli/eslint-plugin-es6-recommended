@@ -1,46 +1,50 @@
 /**
- * @fileoverview Disallow reassignment of function parameters.
- * @author Nat Burns
- * @copyright 2014 Nat Burns. All rights reserved.
+ * @fileoverview Prefer use of default parameters.
+ * @author Felix Enriquez
+ * @copyright 2015 Felix Enriquez. All rights reserved.
  */
 "use strict";
-
+var msg = 'use default parameters instead asignation with "||" operator';
 //------------------------------------------------------------------------------
 // Rule Definition
 //------------------------------------------------------------------------------
 
 module.exports = function(context) {
-  var props = context.options[0] && Boolean(context.options[0].props);
-  /**
-   * Reports a reference if is non initializer and writable.
-   * @param {Reference} reference - A reference to check.
-   * @param {int} index - The index of the reference in the references.
-   * @param {Reference[]} references - The array that the reference belongs to.
-   * @returns {void}
-   */
-  function checkReference(reference, index, references) {
-
-    //type: "LogicalExpression";
-    if (references.type === "AssignmentExpression") {
-
-      context.report();
-    }
-  }
-
-  /**
-   * Checks parameters of a given function node.
-   * @param {ASTNode} node - A function node to check.
-   * @returns {void}
-   */
   function checkForFunction(node) {
-    node.params
+    //from function body to body in blockStament
+    var body = node.body.body;
+
+    body.forEach(function(childNode) {
+      if (childNode.type === 'ExpressionStatement' && childNode.expression.type === 'AssignmentExpression') {
+        node.params.forEach(function(param) {
+          if (node.expression.left.name === param.name &&
+            childNode.expression.right.type === 'LogicalExpression' &&
+            childNode.expression.right.operator === "||" &&
+            childNode.expression.right.left.name === param.name) {
+            context.report(
+              childNode,
+              msg);
+          }
+        });
+      }
+    });
   }
 
   return {
     // `:exit` is needed for the `node.parent` property of identifier nodes.
-    "FunctionDeclaration:exit"    : checkForFunction,
-    "FunctionExpression:exit"     : checkForFunction,
+    "FunctionDeclaration:exit": checkForFunction,
+    "FunctionExpression:exit": checkForFunction,
     "ArrowFunctionExpression:exit": checkForFunction
   };
 
 };
+
+module.exports.schema = [{
+  "type": "object",
+  "properties": {
+    "props": {
+      "type": "boolean"
+    }
+  },
+  "additionalProperties": false
+}];
